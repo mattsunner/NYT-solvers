@@ -16,6 +16,7 @@ app = Flask(__name__)
 
 # Globals
 WORD_LIST = os.getenv('WORD_LIST')
+HOST = os.getenv('HOST')
 
 
 # App API Routes
@@ -52,4 +53,4 @@ def solver_route():
 
 if __name__ == '__main__':
     PORT = 5005
-    app.run(debug=True, port=PORT)
+    app.run(debug=True, port=PORT, host=HOST)
