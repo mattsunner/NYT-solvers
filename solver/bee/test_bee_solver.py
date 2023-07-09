@@ -1,4 +1,4 @@
-from bee import bee_solver
+from solver.bee import bee_solver
 
 # Testing Data - Sample
 parse_words = ['hello', 'tent', 'gone', 'goodbye', 'cat', 'dog']
