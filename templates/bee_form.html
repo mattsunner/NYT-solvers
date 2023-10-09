@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="{{ url_for('bee_solver_api') }}" method="POST">
+    <p>Letters: <input type="text" name="letters"/></p>
+    <p>Golden Letter: <input type="text" name="golden_letter"/></p>
+    <p><input type = "submit" value = "Submit" /></p>
+</form>
+
+<div>
+    <h2>Results:</h2>
+    {% include 'bee_results.html' %}
+</div>
+
+{% endblock %}

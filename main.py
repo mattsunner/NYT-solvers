@@ -5,7 +5,7 @@ Author: Matthew Sunner, 2023
 """
 import os
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from dotenv import load_dotenv
 
 from solver.bee import bee_solver
@@ -23,14 +23,16 @@ HOST = os.getenv('HOST')
 
 @app.route('/', methods=['GET'])
 def index():
-    return jsonify({'message': 'Health Check Passed'})
+    return render_template('index.html')
 
 
-@app.route('/solvers/bee', methods=['GET', 'POST'])
-def solver_route():
+@app.route('/bee', methods=['GET', 'POST'])
+def bee_form():
+    return render_template('bee_form.html')
 
-    if request.method == 'GET':
-        return jsonify({'message': 'GET hit; documentation and form'})
+
+@app.route('/bee/results', methods=['POST'])
+def bee_solver_api():
     
     if request.method == 'POST':
         letters = request.form['letters']
@@ -49,7 +51,7 @@ def solver_route():
 
         final_list = bee_solver.return_size(golden_list, 4)
 
-        return jsonify({'results': final_list})
+        return render_template('bee_form.html', final_list=final_list)
 
 if __name__ == '__main__':
     PORT = 5005
