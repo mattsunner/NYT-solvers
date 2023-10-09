@@ -2,6 +2,10 @@
 
 {% block content %}
 
+<h2>Bee Solver - NYT</h2>
+
+<p>This solver aids in solving the "NYT Spelling Bee Game". Enter in all 7 letters in the first box, and the golden letter in the second box.</p>
+
 <form action="{{ url_for('bee_solver_api') }}" method="POST">
     <p>Letters: <input type="text" name="letters"/></p>
     <p>Golden Letter: <input type="text" name="golden_letter"/></p>
